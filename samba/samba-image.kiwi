@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- OBS-ExcludeArch: i586 s390 -->
+
+<image schemaversion="6.9" name="samba-image" xmlns:suse_label_helper="com.suse.label_helper">
+  <description type="system">
+    <author>Thorsten Kukuk</author>
+    <contact>kukuk@suse.com</contact>
+    <specification>SMB/CIFS File, Print, and Authentication Server (samba) image</specification>
+  </description>
+  <preferences>
+    <type
+      image="docker"
+      derived_from="obsrepositories:/opensuse/busybox#latest">
+      <containerconfig
+        name="samba"
+        tag="latest"
+        additionaltags="%PKG_VERSION%,%PKG_VERSION%-%RELEASE%"
+        maintainer="Thorsten Kukuk &lt;kukuk@suse.com&gt;">
+        <entrypoint execute="/entrypoint.sh"/>
+	<expose>
+          <port number='137/udp'/>
+	  <port number='138/udp'/>
+	  <port number='139'/>
+          <port number='445'/>
+        </expose>
+        <labels>
+          <suse_label_helper:add_prefix prefix="org.opensuse.samba">
+            <label name="org.opencontainers.image.title" value="SMB/CIFS File,
+								Print, and
+								Authentication
+								Server (samba)"/>
+            <label name="org.opencontainers.image.description" value="Image containing samba."/>
+            <label name="org.opencontainers.image.version" value="%PKG_VERSION%-%RELEASE%"/>
+            <label name="org.opencontainers.image.created" value="%BUILDTIME%"/>
+            <label name="org.openbuildservice.disturl" value="%DISTURL%"/>
+          </suse_label_helper:add_prefix>
+        </labels>
+        <history author="Thorsten Kukuk &lt;kukuk@suse.com&gt;">samba container</history>
+      </containerconfig>
+    </type>
+    <version>1.0.0</version>
+    <packagemanager>zypper</packagemanager>
+    <rpm-excludedocs>true</rpm-excludedocs>
+  </preferences>
+  <repository>
+    <source path="obsrepositories:/"/>
+  </repository>
+  <packages type="bootstrap">
+    <package name="catatonit"/>
+    <package name="samba"/>
+    <package name="shadow"/>
+    <package name="system-user-nobody"/>
+    <package name="timezone"/>
+    <package name="-busybox-adduser"/>
+  </packages>
+</image>
