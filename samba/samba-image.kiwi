@@ -50,8 +50,9 @@
     <package name="catatonit"/>
     <package name="samba"/>
     <package name="shadow"/>
-    <package name="system-user-nobody"/>
     <package name="timezone"/>
+    <package name="system-user-mail"/>
     <package name="-busybox-adduser"/>
+    <package name="-busybox-coreutils"/>
   </packages>
 </image>
