@@ -15,7 +15,7 @@ Instructions: [README](samba/README.md)
 
 ### wsdd
 
-This container image provides a Web Service Discovery host Daemon (wsdd).
+This container image provides a Web Service Discovery host Daemon (wsdd) implemented as python script.
 
 Instructions: [README](wsdd/README.md)
 
