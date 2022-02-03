@@ -26,6 +26,7 @@ This container image provides a WSD/LLMNR Discovery/Name Service Daemon
 
 Instructions: [README](wsdd2/README.md)
 
+## Configuration files
 ### docker-compose
 
 There is a [docker-compose](docker-compose.yaml) configuration file to start
