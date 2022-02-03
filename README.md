@@ -19,6 +19,32 @@ This container image provides a Web Service Discovery host Daemon (wsdd) impleme
 
 Instructions: [README](wsdd/README.md)
 
+### wsdd2
+
+This container image provides a WSD/LLMNR Discovery/Name Service Daemon
+(wsdd2) implemented in C.
+
+Instructions: [README](wsdd2/README.md)
+
+### docker-compose
+
+There is a [docker-compose](docker-compose.yaml) configuration file to start
+the samba server and wsdd daemon together on one host.
+The `volumes` and `command` part of the samba service section needs to be
+adjusted first.
+
+#### Usage
+
+Start the containers:
+```sh
+docker-compose up -d
+```
+
+Stop the containers:
+```sh
+docker-compose down
+```
+
 ## Issues
 
 If you have any problems with or questions about this image, please contact me through a [GitHub issue](https://github.com/thkukuk/containers-samba/issues).
