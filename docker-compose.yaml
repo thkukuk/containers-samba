@@ -1,0 +1,23 @@
+version: '2'
+
+services:
+  samba:
+    image: "registry.opensuse.org/home/kukuk/container/samba"
+    environment:
+      TZ: 'UTC'
+    ports:
+      - "139:139/tcp"
+      - "445:445/tcp"
+    restart: unless-stopped
+    volumes:
+      - /home:/home:z
+      - /exports:/exports:z
+    command: '-u admin:bad_password:1021 -u user:bad_password_2 -s Export:/exports:yes:yes:yes'
+  wsdd:
+    image: "registry.opensuse.org/home/kukuk/container/wsdd"
+    environment:
+      - HOSTNAME=${HOSTNAME}
+    depends_on:
+      - samba
+    restart: unless-stopped
+    network_mode: "host"
