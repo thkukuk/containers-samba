@@ -1,12 +1,14 @@
 #!/bin/sh
 
 DEBUG=${DEBUG:-"0"}
+ARGS=""
 
-[ "${DEBUG}" -eq "1" ] && set -x
+if [ "${DEBUG}" -eq "1" ]; then
+        set -x
+	ARGS="-W -W -L -L $ARGS"
+fi
 
 export PATH=/usr/sbin:/sbin:${PATH}
-
-ARGS=""
 
 if [ -n "${HOSTNAME}" ]; then
 	ARGS="-H $HOSTNAME -N $HOSTNAME $ARGS"
