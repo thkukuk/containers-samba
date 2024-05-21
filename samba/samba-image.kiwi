@@ -2,7 +2,7 @@
 
 <!-- OBS-ExcludeArch: i586 s390 -->
 
-<image schemaversion="6.9" name="samba-image" xmlns:suse_label_helper="com.suse.label_helper">
+<image schemaversion="7.4" name="samba-image">
   <description type="system">
     <author>Thorsten Kukuk</author>
     <contact>kukuk@suse.com</contact>
@@ -25,7 +25,7 @@
           <port number='445'/>
         </expose>
         <labels>
-          <suse_label_helper:add_prefix prefix="org.opensuse.samba">
+          <suse_label_helper:add_prefix xmlns:suse_label_helper="com.suse.label_helper" prefix="org.opensuse.samba">
             <label name="org.opencontainers.image.title" value="SMB/CIFS File,
 								Print, and
 								Authentication
